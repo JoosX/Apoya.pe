@@ -22,7 +22,7 @@ export default {
       
       articulosData: [
         {
-          imagenUrl: '/Sprunkos.png',
+          imagenUrl: '/img/Sprunkos.png',
           categoria: '01',
           titulo: '¡El Voluntariado más conocido y querido por y para los jovenes está de vuelta!',
           enlaceUrl: '#',
@@ -43,15 +43,15 @@ export default {
           resumen: '....',
         },
         {
-          imagenUrl: '/img/voluntariado3.jpg',
-          categoria: '04',
+          imagenUrl: '/img/Voluntariado5.jpg',
+          categoria: '03',
           titulo: 'El programa de voluntariado nacional está buscandote!',
           enlaceUrl: '#',
           resumen: '....',
         },
                 {
-          imagenUrl: '/img/voluntariado3.jpg',
-          categoria: '05',
+          imagenUrl: '/img/voluntariado4.jpg',
+          categoria: '03',
           titulo: 'El programa de voluntariado nacional está buscandote!',
           enlaceUrl: '#',
           resumen: '....',
@@ -63,7 +63,7 @@ export default {
 </script>
 
 <style scoped>
-/* Aquí solo iría el estilo del contenedor principal, si lo necesitas */
+/* Aquí solo iría el estilo del contenedor principal, si lo necesitasn atte.romarius */
 .contenedor-articulos {
   max-width: 900px;
   margin: 40px auto;

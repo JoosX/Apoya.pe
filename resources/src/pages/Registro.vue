@@ -24,7 +24,7 @@
       </div>
       
       <h3 class="acceso-titulo">
-        {{ modoActual === 'login' ? 'Acceso para usuarios externos' : 'Creación de cuenta' }}
+        {{ modoActual === 'login' ? 'Ingrese sus Datos registrados' : 'Creación de cuenta' }}
       </h3>
 
       <form @submit.prevent="manejarEnvio">
@@ -66,7 +66,7 @@ export default {
   data() {
     return {
       // Estado principal
-      modoActual: 'login', // Inicia en modo 'login'
+      modoActual: 'login',
       
       // Variables para ambos formularios (enlazadas con v-model)
       username: '',
@@ -121,14 +121,18 @@ export default {
     display: flex; 
     min-height: 100vh;
     font-family: Arial, sans-serif;
-    background-color: #000;
+    background-color: hsl(0, 1%, 17%);
+    background-image: url('https://blog.experiencias.com.pe/wp-content/uploads/2024/03/Voluntariado-Reciclaje-1024x576.jpg');
+    background-size: cover;       /* Ajusta la imagen al tamaño del contenedor */
+    background-position: center;  /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que se repita */
 }
 
 .form-card {
     width: 35%; 
     padding: 60px;
     background-color: white;
-    color: #333;
+    color: #000000;
     display: flex;
     flex-direction: column;
 }
@@ -184,7 +188,7 @@ export default {
 .btn-acceder {
     width: 100%;
     padding: 12px;
-    background-color: #3f51b5; 
+    background-color: #41b883; 
     color: white;
     border: none;
     border-radius: 4px;
@@ -194,7 +198,7 @@ export default {
 }
 
 .btn-acceder:hover {
-    background-color: #303f9f;
+    background-color: #2c7755;
 }
 
 .error-message {
@@ -228,7 +232,7 @@ export default {
 }
 
 .toggle-btn.active {
-    background-color: #3f51b5; 
+    background-color: #41b883 ; 
     color: white;
     font-weight: 700;
 }
