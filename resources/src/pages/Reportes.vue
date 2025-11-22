@@ -55,21 +55,16 @@ export default {
     }
   },
   methods: {
-    // Ejemplo de cómo manejaríamos srcset si tuvieras múltiples tamaños de imagen
     getResponsiveImageSrcset(baseUrl) {
-      // Esto es solo un placeholder. En un caso real, necesitarías generar
-      // o mapear tus URLs a diferentes resoluciones (e.g., small, medium, large)
-      // Ejemplo: return `${baseUrl}-sm.jpg 480w, ${baseUrl}-md.jpg 800w, ${baseUrl}-lg.jpg 1200w`;
-      return baseUrl; // Por ahora, devuelve la base URL si no tienes versiones
+      
+      return baseUrl; 
     }
   }
 }
 </script>
 
 <style scoped>
-/* ======================================= */
-/* ESTILOS GLOBALES / HOME-PAGE (Dark Mode)*/
-/* ======================================= */
+
 
 .home-page {
   background-color: #0d0d0d; /* Un negro más profundo */
@@ -81,13 +76,12 @@ export default {
 
 /* Título de la página */
 .page-title {
-  text-align: center;
-  font-size: 3.2rem; /* Título un poco más grande */
-  color: #f0f0f0; /* Blanco puro para el título */
-  margin-bottom: 70px; /* Más espacio debajo */
-  font-weight: 800; /* Más audaz */
-  letter-spacing: -1px; /* Espaciado ajustado */
-  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); /* Sombra más pronunciada */
+  text-align: center; 
+  color: #f0f0f0; /* */
+  margin-bottom: 70px; 
+  font-weight: 800; 
+  letter-spacing: -1px; 
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); 
 }
 
 /* Contenedor de las tarjetas - CSS Grid */
@@ -96,15 +90,11 @@ export default {
   margin: 0 auto; 
   padding: 0 30px; /* Más padding horizontal */
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Tarjetas un poco más grandes */
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
   gap: 35px; /* Más espacio entre tarjetas */
   justify-content: center; 
   align-items: stretch; 
 }
-
-/* ======================================= */
-/* ESTILOS DE LA TARJETA (Dark Mode - Refinado) */
-/* ======================================= */
 
 .articulo-card {
   
