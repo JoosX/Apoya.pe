@@ -24,7 +24,7 @@
       </div>
       
       <h3 class="acceso-titulo">
-        {{ modoActual === 'login' ? 'Acceso para usuarios externos' : 'Creación de cuenta' }}
+        {{ modoActual === 'login' ? 'Ingrese sus Datos registrados' : 'Creación de cuenta' }}
       </h3>
 
       <form @submit.prevent="manejarEnvio">
@@ -66,7 +66,7 @@ export default {
   data() {
     return {
       // Estado principal
-      modoActual: 'login', // Inicia en modo 'login'
+      modoActual: 'login',
       
       // Variables para ambos formularios (enlazadas con v-model)
       username: '',
@@ -95,22 +95,46 @@ export default {
     },
 
     iniciarSesion() {
-      if (this.username === 'test' && this.password === '123') {
-        alert('¡Inicio de Sesión Exitoso!');
-      } else {
-        this.loginError = 'Usuario o Contraseña incorrectos.';
-      }
-      this.password = '';
+      fetch("http://localhost/Apoyape/login.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          username: this.username,
+          password: this.password
+        })
+      })
+      .then(res => res.json())
+      .then(data => {
+        if(data.success){
+          alert("Bienvenido " + data.user.username);
+          localStorage.setItem("usuarioLogueado", JSON.stringify(data.user));
+        } else {
+          this.loginError = data.message;
+        }
+      })
     },
 
     registrarUsuario() {
-      if (!this.username || !this.password || !this.dni) {
-         this.loginError = 'Por favor, complete todos los campos de registro (Usuario, Contraseña, DNI).';
-         return;
-      }
-      alert(`¡Registro Exitoso! Usuario: ${this.username}`);
-      this.cambiarModo('login'); // Volver al modo Login
+      fetch("http://localhost/Apoyape/registro.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          username: this.username,
+          password: this.password,
+          dni: this.dni
+        })
+      })
+      .then(res => res.json())
+      .then(data => {
+        if(data.success){
+          alert("Registro exitoso");
+          this.cambiarModo("login");
+        } else {
+          this.loginError = data.message;
+        }
+      })
     }
+
   }
 };
 </script>
@@ -121,14 +145,18 @@ export default {
     display: flex; 
     min-height: 100vh;
     font-family: Arial, sans-serif;
-    background-color: #000;
+    background-color: hsl(0, 1%, 17%);
+    background-image: url('https://blog.experiencias.com.pe/wp-content/uploads/2024/03/Voluntariado-Reciclaje-1024x576.jpg');
+    background-size: cover;       /* Ajusta la imagen al tamaño del contenedor */
+    background-position: center;  /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que se repita */
 }
 
 .form-card {
     width: 35%; 
     padding: 60px;
     background-color: white;
-    color: #333;
+    color: #000000;
     display: flex;
     flex-direction: column;
 }
@@ -184,7 +212,7 @@ export default {
 .btn-acceder {
     width: 100%;
     padding: 12px;
-    background-color: #3f51b5; 
+    background-color: #41b883; 
     color: white;
     border: none;
     border-radius: 4px;
@@ -194,7 +222,7 @@ export default {
 }
 
 .btn-acceder:hover {
-    background-color: #303f9f;
+    background-color: #2c7755;
 }
 
 .error-message {
@@ -228,7 +256,7 @@ export default {
 }
 
 .toggle-btn.active {
-    background-color: #3f51b5; 
+    background-color: #41b883 ; 
     color: white;
     font-weight: 700;
 }

@@ -113,7 +113,7 @@ const team = [
   margin:0;
   color:#c9d1d9;
   line-height:1.4;
-}
+}/*daaaaa*/
 
 /* Responsive: apilar en móvil */
 @media (max-width: 680px){
