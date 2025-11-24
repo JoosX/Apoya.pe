@@ -46,7 +46,7 @@ import { RouterLink } from 'vue-router'
         </div>
 
         <div class="logo">
-            <img src="logo.png" alt="logo" class="logofoter">
+            <img src="resources/img/logo.png" alt="logo" class="logofoter">
             <p>© 2025 Apoya.pe Todos los derechos reservados</p>
         </div>
     </footer>
@@ -87,5 +87,31 @@ import { RouterLink } from 'vue-router'
 .logo p{
     font-size: 15px;
     text-align: center;
+}
+
+@media (max-width: 920px){
+    .footer{
+        padding: 40px 50px;
+    }
+    .lado_derecho {
+        gap: 50px;
+    }
+}
+@media(max-width:650px){
+    .lado_derecho{
+        flex-direction: column;
+        gap: 20px;
+    }
+    .footer{
+        padding: 25px 110px;
+    }
+    .logo{
+        padding: 20px 0 0 0;;
+    }
+}
+@media (max-width:450px){
+    .footer{
+        padding: 20px 60px;
+    }
 }
 </style>
