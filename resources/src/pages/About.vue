@@ -5,7 +5,7 @@
     <div class="list">
       <article class="card" v-for="(p, i) in team" :key="i">
         <img class="photo" :src="p.photo" :alt="p.name" />
-        <div class="info">
+        <div class="info"> 
           <h2>{{ p.name }}</h2>
           <p class="role">{{ p.role }}</p>
           <p class="bio">{{ p.bio }}</p>
