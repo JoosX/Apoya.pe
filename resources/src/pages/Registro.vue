@@ -2,8 +2,7 @@
   <div class="login-register-container">
     <div class="form-card">
       <div class="logo-section">
-        <img src="/img/Sprunkos.png" alt="Logo Apoya.pe" class="logo"> 
-        <h2>INGRESAR</h2>
+        <h2>Ingresar</h2>
       </div>
 
       <div class="toggle-buttons">
