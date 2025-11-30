@@ -44,6 +44,16 @@
           <input type="text" id="dni" v-model="dni" required>
         </div>
         
+        <div class="input-group" v-if="modoActual === 'register'">
+          <label for="telefono">Teléfono</label>
+          <input type="text" id="telefono" v-model="telefono" required>
+        </div>
+
+        <div class="input-group" v-if="modoActual === 'register'">
+          <label for="email">Email</label>
+          <input type="email" id="email" v-model="email" required>
+        </div>
+
         <div class="checkbox-group" v-if="modoActual === 'login'">
           <input type="checkbox" id="remember" v-model="rememberMe">
           <label for="remember">Recordar nombre de usuario</label>
@@ -121,7 +131,9 @@ export default {
         body: JSON.stringify({
           username: this.username,
           password: this.password,
-          dni: this.dni
+          dni: this.dni,
+          telefono: this.telefono,   
+          email: this.email   
         })
       })
       .then(res => res.json())

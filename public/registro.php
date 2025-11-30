@@ -14,7 +14,11 @@ $data = json_decode(file_get_contents("php://input"), true);
 $username = $data['username'];
 $password = password_hash($data['password'], PASSWORD_DEFAULT);
 $dni = $data['dni'] ?? '';
+$telefono = $data['telefono'] ?? null;
+$email    = $data['email'] ?? null;
 
+$stmt = $conn->prepare("INSERT INTO usuarios (username, password, dni, telefono, email) VALUES (?, ?, ?, ?, ?)");
+$stmt->bind_param("sssss", $username, $passHash, $dni, $telefono, $email);
 $stmt = $conn->prepare("INSERT INTO usuarios (username, password, dni) VALUES (?, ?, ?)");
 $stmt->bind_param("sss", $username, $password, $dni);
 
