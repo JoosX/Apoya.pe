@@ -61,6 +61,8 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   name: 'RegistroPage', // Nombre que usará el componente
   data() {
@@ -95,21 +97,44 @@ export default {
     },
 
     iniciarSesion() {
-      if (this.username === 'test' && this.password === '123') {
-        alert('¡Inicio de Sesión Exitoso!');
-      } else {
-        this.loginError = 'Usuario o Contraseña incorrectos.';
-      }
-      this.password = '';
+      axios.post('http://127.0.0.1:8000/api/login', {
+        email: this.username,
+        password: this.password
+      })
+      .then(response => {
+        localStorage.setItem("token", response.data.token);
+        localStorage.setItem("usuario", JSON.stringify(response.data.user));
+    
+        alert("Inicio de sesión exitoso");
+
+    // Redirigir o actualizar la UI
+        this.$router.push('/home');
+      })
+      .catch(error => {
+        this.loginError = "Credenciales incorrectas";
+      });
     },
 
-    registrarUsuario() {
+    async registrarUsuario() {
       if (!this.username || !this.password || !this.dni) {
-         this.loginError = 'Por favor, complete todos los campos de registro (Usuario, Contraseña, DNI).';
-         return;
+        this.loginError = 'Por favor, complete todos los campos.';
+        return;
       }
-      alert(`¡Registro Exitoso! Usuario: ${this.username}`);
-      this.cambiarModo('login'); // Volver al modo Login
+
+      try {
+        const response = await axios.post('http://127.0.0.1:8000/api/register', {
+          name: this.username,
+          email: this.username + '@correo.com',
+          password: this.password,
+          dni: this.dni
+        });
+
+        alert('Usuario registrado exitosamente');
+        this.cambiarModo('login');
+
+      } catch (error) {
+        this.loginError = 'Error al registrar: ' + error.response.data.message;
+      }
     }
   }
 };
