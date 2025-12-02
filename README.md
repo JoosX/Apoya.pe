@@ -1,6 +1,6 @@
 <p align="center">
   <a href="#" target="_blank">
-    <img src="https://i.imgur.com/tmN5xKy.png" width="400" alt="Apoya.pe Logo">
+    <img src="/public/img/logo.png" width="400" alt="Apoya.pe Logo">
   </a>
 </p>
 
