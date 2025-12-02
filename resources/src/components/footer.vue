@@ -46,7 +46,7 @@ import { RouterLink } from 'vue-router'
         </div>
 
         <div class="logo">
-            <img src="resources/img/logo.png" alt="logo" class="logofoter">
+            <img src="/img/logo.png" alt="logo" class="logofoter">
             <p>© 2025 Apoya.pe Todos los derechos reservados</p>
         </div>
     </footer>
@@ -88,6 +88,16 @@ import { RouterLink } from 'vue-router'
     font-size: 15px;
     text-align: center;
 }
+
+/* NUEVOS ESTILOS PARA EL LOGO */
+.logofoter {
+    width: 100px; /* Tamaño más pequeño */
+    height: auto; /* Mantiene la proporción */
+    max-width: 100%; /* Se adapta al contenedor */
+    display: block;
+    margin: 0 ; /* Centra el logo */
+}
+
 
 @media (max-width: 920px){
     .footer{
