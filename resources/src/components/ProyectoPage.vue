@@ -1,89 +1,108 @@
 <template>
-  
+  <!-- Cabecera de plantilla -->
   <section class="main-hero">
     <div class="main-hero-content-wrapper"> 
       <div class="main-hero-content">
-        <h1>Descubre tu forma de ayudar</h1>
+         <h1>Descubre tu forma de ayudar</h1>
         <p>Encuentra el voluntariado ideal para ti.</p>
       </div>
+
       <div class="main-hero-image-wrapper">
-        <img :src="heroHandImage" alt="Manos unidas" class="main-hero-image">
+        <img :src="organizacion.mainImage" alt="Imagen principal" class="main-hero-image" />
       </div>
     </div>
   </section>
 
   <div class="page">
-    
+
+    <!-- Imagen de presentacion (osea 'top') -->
     <header class="hero">
-      <img :src="topImage" alt="Imagen superior" class="hero-img" />
+      <img :src="organizacion.topImage" alt="Imagen superior" class="hero-img" />
     </header>
 
+    <!-- dos imagenes (left - right) -->
     <section class="two-up">
       <div class="card">
-        <img :src="leftTop" alt="Imagen izquierda" />
+        <img :src="organizacion.leftImage" alt="Imagen izquierda" />
       </div>
+
       <div class="card">
-        <img :src="rightTop" alt="Imagen derecha" />
+        <img :src="organizacion.rightImage" alt="Imagen derecha" />
       </div>
     </section>
 
+    <!-- Seccion de texto y presentacion con la imagen principal -->
     <section class="media-text">
-      <img :src="leftBottom" alt="Imagen inferior" class="media-img" />
+      <img :src="organizacion.mainImage" alt="Imagen media" class="media-img" />
+
       <div class="media-content">
-        <h2>{{ title }}</h2>
-        <p>{{ text }}</p>
-        <button @click="onAction">Acción</button>
+        <h2>{{ organizacion.titulo }}</h2>
+        <p>{{ organizacion.descripcion }}</p>
+        <button @click="scrollToForm('voluntario')">Quiero ayudar</button>
       </div>
     </section>
+
   </div>
 
+  <!-- Texto adicional -->
   <section class="help-wrapper">
     <h2 class="help-title">
-      Ser de Caritas del Perú<br />
-      significa que puedes ayudar así:
+      Ser parte de {{ organizacion.titulo }} significa que puedes ayudar así:
     </h2>
 
     <div class="help-grid">
+
       <div class="help-card">
         <h3 class="help-card-title">Quiero ser <span>voluntario</span></h3>
-        <p>Caritas te conecta con programas de voluntariado de <strong>más de 710 organizaciones</strong>.</p>
-        <button class="help-btn" @click="scrollToForm('voluntario')">Ver Voluntariados</button>
+        <p>Conoce oportunidades de voluntariado disponibles.</p>
+        <button class="help-btn" @click="scrollToForm('voluntario')">
+          Ver Voluntariados
+        </button>
       </div>
 
       <div class="help-card">
         <h3 class="help-card-title">Quiero <span>donar bienes</span></h3>
-        <p>Conoce las campañas de donación de nuestra CaritaRed a través de un <strong>directorio social</strong>.</p>
-        <button class="help-btn" @click="scrollToForm('bienes')">Ver Donaciones</button>
+        <p>Participa en campañas de donación.</p>
+        <button class="help-btn" @click="scrollToForm('bienes')">
+          Ver Donaciones
+        </button>
       </div>
 
       <div class="help-card">
         <h3 class="help-card-title">Quiero <span>donar dinero</span></h3>
-        <p>Ya puedes realizar <strong>donaciones monetarias</strong> a través de nuestro crowdfunding.</p>
-        <button class="help-btn" @click="scrollToForm('dinero')">Ver Crowdfunding</button>
+        <p>Apoya proyectos mediante donaciones económicas.</p>
+        <button class="help-btn" @click="scrollToForm('dinero')">
+          Ver Crowdfunding
+        </button>
       </div>
+
     </div>
   </section>
 
+  <!-- Formulario -->
   <section id="formulario-registro" class="join-us-section">
     <div class="form-container">
       <h2 class="form-title">Únete a la causa</h2>
-      <p class="form-subtitle">Déjanos tus datos y selecciona cómo te gustaría apoyar. Nos pondremos en contacto contigo pronto.</p>
-      
+      <p class="form-subtitle">
+        Déjanos tus datos y selecciona cómo deseas ayudar. Te contactaremos pronto.
+      </p>
+
       <form @submit.prevent="submitForm" class="support-form">
-        
+
         <div class="form-group">
           <label for="name">Nombre Completo</label>
-          <input type="text" id="name" v-model="formData.name" placeholder="Ej. María Rodriguez" required />
+          <input type="text" id="name" v-model="formData.name" required />
         </div>
 
         <div class="form-row">
           <div class="form-group">
             <label for="email">Correo Electrónico</label>
-            <input type="email" id="email" v-model="formData.email" placeholder="correo@ejemplo.com" required />
+            <input type="email" id="email" v-model="formData.email" required />
           </div>
+
           <div class="form-group">
-            <label for="phone">Teléfono / Celular</label>
-            <input type="tel" id="phone" v-model="formData.phone" placeholder="999 999 999" required />
+            <label for="phone">Teléfono</label>
+            <input type="tel" id="phone" v-model="formData.phone" required />
           </div>
         </div>
 
@@ -91,44 +110,35 @@
           <label for="type">¿Cómo deseas ayudar?</label>
           <select id="type" v-model="formData.supportType" required>
             <option value="" disabled>Selecciona una opción</option>
-            <option value="voluntario">Quiero ser Voluntario</option>
-            <option value="bienes">Quiero Donar Bienes</option>
-            <option value="dinero">Quiero Donar Dinero</option>
-            <option value="otro">Otro / Consulta General</option>
+            <option value="voluntario">Voluntariado</option>
+            <option value="bienes">Donar Bienes</option>
+            <option value="dinero">Donar Dinero</option>
+            <option value="otro">Otro</option>
           </select>
         </div>
 
         <div class="form-group">
           <label for="message">Mensaje (Opcional)</label>
-          <textarea id="message" v-model="formData.message" rows="4" placeholder="Escribe aquí tus dudas o comentarios..."></textarea>
+          <textarea id="message" v-model="formData.message" rows="4"></textarea>
         </div>
 
         <button type="submit" class="submit-btn">Enviar mis datos</button>
       </form>
     </div>
   </section>
-
 </template>
 
+
 <script setup>
-import { ref, reactive } from 'vue'
+import { reactive } from 'vue'
 
-// --- IMÁGENES ---
-const heroHandImage = ref('https://voluntariadosocialrioja.org/wp-content/uploads/elementor/thumbs/Movimiento-por-la-Paz-y-Manos-Unidas-r0a80lwxjks770upuo5qqq2rx84ykuyc66mobxo4no.jpg')
-const topImage = ref('https://caritas.org.pe/wp-content/uploads/2024/03/selacc2024.jpg')
-const leftTop = ref('https://caritas.org.pe/wp-content/uploads/2023/05/revista_2023.jpg')
-const rightTop = ref('https://caritas.org.pe/wp-content/uploads/2019/09/balance2018.jpg')
-const leftBottom = ref('https://stakeholders.com.pe/wp-content/uploads/2017/10/balance-caratula-caritas-2016-bajas.jpg')
+const props = defineProps({
+  organizacion: {
+    type: Object,
+    required: true
+  }
+})
 
-// --- TEXTOS ---
-const title = ref('Cáritas, 69 años transformando vidas')
-const text = ref('Contribuimos a mejorar la calidad de vida de las poblaciones más pobres y alejadas del país, a través de acciones, programas y proyectos de desarrollo humano integral , ejecutados con la Red de Cáritas Diocesanas distribuidas en todo el territorio nacional.e.')
-
-function onAction() {
-  alert('Acción ejecutada 👍')
-}
-
-// --- LÓGICA DEL FORMULARIO ---
 const formData = reactive({
   name: '',
   email: '',
@@ -137,10 +147,8 @@ const formData = reactive({
   message: ''
 })
 
-// Función para enviar el formulario
 function submitForm() {
-  // Aquí conectarías con tu Backend o API
-  console.log('Datos enviados:', formData)
+  console.log('Datos enviados:', formData, 'Organización:', props.organizacion.id)
   alert(`¡Gracias ${formData.name}! Hemos recibido tu solicitud de apoyo como "${formData.supportType || 'Consulta General'}". Te contactaremos pronto.`)
   
   // Resetear formulario
@@ -151,21 +159,16 @@ function submitForm() {
   formData.message = ''
 }
 
-// Función para que los botones de arriba bajen al formulario automáticamente
 function scrollToForm(type) {
-  formData.supportType = type; // Pre-selecciona la opción en el select
-  const formElement = document.getElementById('formulario-registro');
+  formData.supportType = type
+  const formElement = document.getElementById('formulario-registro')
   if (formElement) {
-    formElement.scrollIntoView({ behavior: 'smooth' });
+    formElement.scrollIntoView({ behavior: 'smooth' })
   }
 }
 </script>
 
 <style scoped>
-/* ======================================= */
-/* ESTILOS DE PÁGINA Y CONTENEDOR */
-/* ======================================= */
-/* NOTA: EL FIX DE RESPONSIVIDAD 'overflow-x: hidden;' DEBE APLICARSE EN UN ARCHIVO CSS/JS GLOBAL */
 
 .page {
   max-width: 1100px;
@@ -175,15 +178,13 @@ function scrollToForm(type) {
   color: #e2cfcf;
 }
 
-/* ======================================= */
-/* NUEVO BANNER HERO: ANCHO COMPLETO */
-/* ======================================= */
+
+/* Banner HERO  */
 .main-hero {
   background-color: rgb(182, 48, 77); 
   color: white;
   padding: 40px 0; 
   margin-bottom: 30px; 
-  /* Estilos para full-width en desktop */
   width: 100vw; 
   position: relative;
   left: 50%;
@@ -238,9 +239,7 @@ function scrollToForm(type) {
   display: block;
 }
 
-/* ======================================= */
 /* SECCIONES DE CONTENIDO */
-/* ======================================= */
 
 .hero {
   display: flex;
@@ -309,9 +308,9 @@ function scrollToForm(type) {
   transform: translateY(-2px);
 }
 
-/* ======================================= */
+
 /* SECCIÓN AYUDA */
-/* ======================================= */
+
 .help-wrapper {
   margin-top: 40px;
   text-align: center;
@@ -367,14 +366,13 @@ function scrollToForm(type) {
   transform: translateY(-2px);
 }
 
-/* ======================================= */
-/* NUEVOS ESTILOS: FORMULARIO */
-/* ======================================= */
+
+/* Estilos para el formulario */
+
 .join-us-section {
   background-color: #fcfaf7; 
   padding: 60px 20px;
   margin-top: 50px;
-  /* Estilos para full-width en desktop */
   width: 100vw; 
   position: relative;
   left: 50%;
