@@ -15,12 +15,12 @@
 
   <div class="page">
 
-    <!-- Imagen de presentacion (osea 'top') -->
+    
     <header class="hero">
       <img :src="organizacion.topImage" alt="Imagen superior" class="hero-img" />
     </header>
 
-    <!-- dos imagenes (left - right) -->
+    
     <section class="two-up">
       <div class="card">
         <img :src="organizacion.leftImage" alt="Imagen izquierda" />
@@ -31,7 +31,7 @@
       </div>
     </section>
 
-    <!-- Seccion de texto y presentacion con la imagen principal -->
+    
     <section class="media-text">
       <img :src="organizacion.mainImage" alt="Imagen media" class="media-img" />
 
