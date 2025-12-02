@@ -552,7 +552,7 @@ textarea {
     order: 2;
   }
   
-  /* 🚨 Formulario - AJUSTES DEFINITIVOS PARA RESPONSIVIDAD 🚨 */
+
   .join-us-section {
     /* Resetear las propiedades de centrado complejo para móvil */
     margin-left: 0;

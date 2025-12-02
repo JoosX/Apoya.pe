@@ -24,6 +24,8 @@ class AuthController extends Controller
         'dni'      => $request->dni
     ]);
 
+
+
     return response()->json([
         'message' => 'Usuario registrado exitosamente',
         'user' => $user
