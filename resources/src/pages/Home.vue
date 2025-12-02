@@ -26,7 +26,7 @@ onBeforeUnmount(() => clearInterval(timer))
         <p>Inscríbete para participar en ONGs, asociaciones y campañas solidarias.</p>
       </div>
     </main>
-
+    
     <!-- Carrusel -->
     <section class="carousel-section">
       <h2>Proyectos de apoyo en acción</h2>
