@@ -123,6 +123,10 @@
         </div>
 
         <button type="submit" class="submit-btn">Enviar mis datos</button>
+
+        <button type="button" class="submit-btn" @click="enviarWhatsApp">
+        Contactar por WhatsApp
+        </button>
       </form>
     </div>
   </section>
@@ -190,6 +194,19 @@ function scrollToForm(type) {
     formElement.scrollIntoView({ behavior: 'smooth' })
   }
 }
+
+function enviarWhatsApp() {
+  const numero = "51918319155"; // tu número
+  const nombre = formData.name || "Usuario";
+  const tipo = formData.supportType || "sin especificar";
+
+  const mensaje = `Hola, soy ${nombre}. Quisiera unirme al voluntario y ayudar con: ${tipo}.`;
+
+  const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
+
+  window.open(url, "_blank");
+}
+
 </script>
 
 <style scoped>
