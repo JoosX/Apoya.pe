@@ -45,6 +45,24 @@ onBeforeUnmount(() => clearInterval(timer))
   </div>
 </template>
 
+<script>
+import axios from "axios";
+  export default {
+    data() {
+      return {
+        user: null
+      }
+    },
+    mounted() {
+      const userData = localStorage.getItem("usuario");
+      if (userData) {
+        this.user = JSON.parse(userData);
+      }
+    }
+
+  }
+</script>
+
 <style>
 :root{ --bg:#0f1115; --text:#e8eaed; --muted:#a0a7af; }
 
