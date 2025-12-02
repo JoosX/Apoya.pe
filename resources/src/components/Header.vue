@@ -44,13 +44,18 @@ export default{
 
     this.user = null;
 
-    this.$router.push("/home");
+    this.$router.push("/");
 
     alert("Sesión cerrada correctamente");
     }
+  },
+  watch: {
+    $route() {
+      const usuarioStorage = localStorage.getItem("usuario");
+      this.user = usuarioStorage ? JSON.parse(usuarioStorage) : null;
+    }
   }
 
-  
 }
   
 </script>
