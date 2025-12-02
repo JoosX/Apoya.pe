@@ -49,4 +49,30 @@ class AuthController extends Controller
             'user' => $user
         ]);
     }
+    public function updateProfile(Request $request){
+        $user = $request->user();
+
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'dni' => 'required|string|max:20',
+            'email' => 'required|email|max:255',
+            'password' => 'nullable|min:6'
+        ]);
+
+        $user->name = $request->name;
+        $user->dni = $request->dni;
+        $user->email = $request->email;
+
+        if ($request->password) {
+            $user->password = bcrypt($request->password);
+        }
+
+        $user->save();
+
+        return response()->json([
+            'message' => 'Perfil actualizado correctamente',
+            'user' => $user
+        ]);
+
+        }
 }
