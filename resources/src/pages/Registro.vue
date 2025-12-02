@@ -100,7 +100,7 @@ export default {
         localStorage.setItem("usuario", JSON.stringify(response.data.user));
     
         alert("Inicio de sesión exitoso");
-        this.$router.push('/home');
+        this.$router.push('/');
       })
       .catch(error => {
         this.loginError = "Credenciales incorrectas";
@@ -116,7 +116,7 @@ export default {
       try {
         const response = await axios.post('http://127.0.0.1:8000/api/register', {
           name: this.username,
-          email: this.username + '@correo.com',
+          email: this.username + '@apoya.com',
           password: this.password,
           dni: this.dni
         });
