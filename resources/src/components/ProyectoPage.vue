@@ -131,6 +131,7 @@
 
 <script setup>
 import { reactive } from 'vue'
+import axios from 'axios'
 
 const props = defineProps({
   organizacion: {
@@ -147,16 +148,39 @@ const formData = reactive({
   message: ''
 })
 
-function submitForm() {
-  console.log('Datos enviados:', formData, 'Organización:', props.organizacion.id)
-  alert(`¡Gracias ${formData.name}! Hemos recibido tu solicitud de apoyo como "${formData.supportType || 'Consulta General'}". Te contactaremos pronto.`)
-  
-  // Resetear formulario
-  formData.name = ''
-  formData.email = ''
-  formData.phone = ''
-  formData.supportType = ''
-  formData.message = ''
+async function submitForm() {
+
+  try {
+    const response = await axios.post("http://127.0.0.1:8000/api/encuestas", {
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      support_type: formData.supportType,
+      message: formData.message,
+      organizacion_nombre: props.organizacion.id
+    });
+
+    alert("¡Tu información fue enviada con éxito!");
+
+    console.log("Guardado en BD:", response.data);
+
+    // Reset
+    formData.name = '';
+    formData.email = '';
+    formData.phone = '';
+    formData.supportType = '';
+    formData.message = '';
+
+  } catch (error) {
+    if (error.response) {
+      alert("Error: " + (error.response.data.message || JSON.stringify(error.response.data)));
+      console.error(error.response.data);
+    } else {
+      alert("Error de conexión. Verifica que Laravel esté corriendo.");
+      console.error(error);
+    }
+  }
+
 }
 
 function scrollToForm(type) {

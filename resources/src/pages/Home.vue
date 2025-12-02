@@ -48,7 +48,6 @@ onBeforeUnmount(() => {
 
 <template>
   <main class="home">
-    <!-- PORTADA / IMAGEN SUPERIOR -->
     <section class="cover">
       <img
         class="cover-image"
@@ -57,7 +56,6 @@ onBeforeUnmount(() => {
       />
     </section>
 
-    <!-- HERO PRINCIPAL -->
     <section class="hero">
       <div class="hero-text">
         <p class="badge">Plataforma ciudadana • Apoya.pe</p>
@@ -92,7 +90,6 @@ onBeforeUnmount(() => {
         </ul>
       </div>
 
-      <!-- CARRUSEL -->
       <section class="hero-carousel" aria-label="Historias de apoyo destacadas">
         <div class="carousel">
           <div
@@ -138,7 +135,6 @@ onBeforeUnmount(() => {
       </section>
     </section>
 
-    <!-- CÓMO FUNCIONA -->
     <section class="how-it-works">
       <h2>¿Cómo funciona Apoya.pe?</h2>
       <p class="how-text">
@@ -179,6 +175,19 @@ onBeforeUnmount(() => {
 </template>
 
 <style scoped>
+/* Variables y estilos globales */
+:root {
+  --bg: #0f1115;
+  --text: #e8eaed;
+  --muted: #a0a7af;
+}
+
+.page {
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
 .home {
   width: 100%;
   max-width: 1120px;
@@ -302,6 +311,10 @@ onBeforeUnmount(() => {
   overflow: hidden;
   border: 1px solid #22262b;
   background: radial-gradient(circle at top, #1a2533, #0f1115);
+  /* Estilos adicionales del merge */
+  max-width: 1100px;
+  margin: 0 auto;
+  width: min(1100px, 100%);
 }
 
 .carousel-inner {
@@ -309,14 +322,20 @@ onBeforeUnmount(() => {
   transition: transform 0.5s ease-in-out;
 }
 
+.track {
+  display: flex;
+  transition: transform 0.6s ease;
+}
+
 .slide {
   min-width: 100%;
   position: relative;
+  height: 260px; /* Ajuste para el carrusel del hero */
 }
 
 .slide-image {
   width: 100%;
-  height: 260px;
+  height: 100%;
   object-fit: cover;
   display: block;
   filter: brightness(0.85);
@@ -478,6 +497,9 @@ onBeforeUnmount(() => {
   }
 
   .slide-image {
+    height: 220px;
+  }
+  .slide {
     height: 220px;
   }
 }
