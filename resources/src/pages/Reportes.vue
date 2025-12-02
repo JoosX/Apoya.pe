@@ -21,8 +21,7 @@
         <div class="card-content">
           <h3 class="card-title">{{ articulo.titulo }}</h3>
           <p class="card-summary">{{ articulo.resumen }}</p>
-          
-          <!-- ENLACE CORREGIDO - usa @click para Vue Router -->
+      
           <a 
             href="#" 
             class="card-link" 
@@ -55,7 +54,7 @@ export default {
           imagenUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTq9AHQpxI0RnaV3Fo1sX0-JWxOD_cvN1lTYQ&s', 
           categoria: '01', 
           titulo: '¡Caritas del Perú', 
-          ruta: '/proyectos/caritas', // Esta ruta lleva a Caritas.vue
+          ruta: '/proyectos/caritas', 
           resumen: 'Promovemos y apoyamos campañas de sensibilización sobre las causas y consecuencias de la pobreza para promover la toma de conciencia y el cambio de actitud.' 
         },
         { 
@@ -63,7 +62,7 @@ export default {
           imagenUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTecUPLXCYiu4lmRhqLEw6Jyu4QFNTCoLG_rw&s', 
           categoria: '02', 
           titulo: 'Cruz Roja Peruana.', 
-          ruta: '/proyectos/cruz', // Cambié enlaceUrl por ruta
+          ruta: '/proyectos/cruz', 
           resumen: 'Somos un movimiento humanitario mundial, ayudamos a prevenir, aliviar y mitigar el sufrimiento humano de las personas y comunidades vulnerables en caso de emergencias o desastres.' 
         },
         { 
@@ -71,7 +70,7 @@ export default {
           imagenUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjWjW94z9FwZ8eCD9wCaJ3vvF_YabeqwMQ7w&s', 
           categoria: '03', 
           titulo: 'Aldeas Infantiles SOS!', 
-          ruta: '/proyectos/aldeas', // Cambié enlaceUrl por ruta
+          ruta: '/proyectos/aldeas', 
           resumen: 'Somos la organización de desarrollo social más grande del mundo que trabaja por la promoción y defensa de los derechos de las niñas, niños, adolescentes y jóvenes, principalmente, por el derecho a vivir en familia de aquellos que han perdido el cuidado familiar o están en riesgo de perderlo.' 
         },
         { 
@@ -79,7 +78,7 @@ export default {
           imagenUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTlYeFVXwsRRejrWrs_ajih5OLz2715MXW3Q&s', 
           categoria: '04', 
           titulo: 'Alianza del Pacifico', 
-          ruta: '/proyectos/alianza', // Cambié enlaceUrl por ruta
+          ruta: '/proyectos/alianza', 
           resumen: 'un área de integración profunda que busca alcanzar la libre circulación de bienes, servicios, capitales y personas e impulsar un mayor crecimiento, desarrollo y competitividad de las economías de las Partes.' 
         },
         { 
@@ -87,7 +86,7 @@ export default {
           imagenUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRBpZwI3ll45ekwAPaAl8a08sxECSfRR5YNQ&s', 
           categoria: '05', 
           titulo: 'Transformando Corazones', 
-          ruta: '/proyectos/transformando', // Cambié enlaceUrl por ruta
+          ruta: '/proyectos/transformando', 
           resumen: 'El voluntariado de Fe y Alegría en el Perú quiere aportar a la formación de personas que contribuyan a la construcción de un Perú más justo y solidario. En un enfoque humanista, el voluntariado tiene también como objetivo el crecimiento permanente de nuestro ser personas con capacidad de trascender.', 
         },
       ]
@@ -95,7 +94,6 @@ export default {
   },
   methods: {
     irAOrganizacion(id) {
-      // Navega a la página de la organización usando Vue Router
       this.$router.push(`/proyectos/${id}`)
     }
   }
@@ -103,7 +101,6 @@ export default {
 </script>
 
 <style scoped>
-/* Tus estilos se mantienen igual */
 .home-page {
   background-color: #0d0d0d;
   padding: 60px 0;
